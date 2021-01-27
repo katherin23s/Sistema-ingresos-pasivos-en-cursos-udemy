@@ -1,0 +1,23 @@
+/*===============================================
+GLOBAL
+=================================================*/
+* {
+  font-family: "Open Sans", sans-serif;
+  a:visited,
+  a:link,
+  a:focus,
+  a:hover,
+  a.active {
+    list-style: none;
+    text-decoration: none;
+  }
+}
+
+/*================================================
+COLOR PLANTILLA
+=================================================*/
+.backColor,
+backColor a {
+  background: #b8453e;
+  color: white;
+}
