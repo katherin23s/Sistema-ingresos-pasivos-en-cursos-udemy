@@ -20,7 +20,8 @@ CABEZONTE
             <div class="col-12 col-sm-9 col-lg-5 pl-sm-4 pt-3">
                 <div class="input-group mb-3">
                     <div class="input-group-append">
-                        <button class="btn btn-danger BackColor" type="submit">
+                        <button class="btn btn-danger BackColor" type="button" data-toggle="modal"
+                            data-target="#modal-Categorias">
                             <span class="float-left pt-1 mx-2 small text-uppercase d-none d-md-block">Categorias</span>
                             <span class="float-rigth mx-2">
                                 <i class="fas fa-bars text-white"></i>
@@ -140,5 +141,174 @@ CABEZONTE
 
         </div>
     </div>
-    </div>
+
 </header>
+
+
+<!-- The Modal -->
+<div class="modal" id="modal-Categorias">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content rounded-0 border-0">
+
+            <!-- Modal body -->
+            <div class="modal-body p-0">
+                <button type="button" class="close pr-2 d-sm-none" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="row">
+                <ul class="col-12 col-sm-6 col-lg-3 p-3 pl-4">
+                    <?php
+                    $tabla = "categorias";
+                    $item = null;
+                    $valor = null;
+                    $categorias = controladorCategorias::ctrMostrarCATysub($tabla, $item, $valor);
+                    foreach ($categorias as $key => $value) {
+                        echo ' <a href="" class="text-secondary">
+                        <li class="small">
+                            <span class="badge badge-pill">
+                                <i class="' . $value["icono"] . '">
+
+                                </i>
+                            </span>
+                            ' . $value["categoria"] . '
+                        </li>
+                    </a>';
+                    }
+                    ?>
+
+                </ul>
+                <!--==========================================SUBCATEGORIAS==========================================-->
+
+                <div class="d-sm-block col-12 col-sm-6 col-lg-4 bg-light p-3 pl-4">
+                    <h5 class="text-danger"> Cursos de <span><?php echo $categorias[0]["categoria"]; ?></span>
+                    </h5>
+                    <hr>
+                    <ul class="list-unstyled">
+                        <?php
+                        $tabla = "subcategorias";
+                        $item = "id_categoria";
+                        $valor = 1;
+                        $subcategorias = controladorCategorias::ctrMostrarCATySUB($tabla, $item, $valor);
+                        foreach ($subcategorias as $key => $value) {
+                            echo ' <a href="#" class="text-secondary">
+                            <li class="small my-2">' . $value["subcategoria"] . '</li>
+                        </a>';
+                        }
+
+                        ?>
+
+                    </ul>
+                </div>
+
+                <!-- =====================================================DESCRIPCION BREVE CATEGORIA======================================== -->
+                <div class=" d-none d-lg-block col-lg-5 pt-3">
+                    <div class="card mr-lg-3">
+                        <img class="card-img-top" src="visitas/img/ofertas/desarrollo.jpg">
+                        <div class="card-body">
+                            <h5 class="card-title text-danger"> Cursos de <span>Cursos de
+                                    <span><?php echo $categorias[0]["categoria"]; ?> </span></h5>
+                            <p class="card-text small"> <?php echo $categorias[0]["descripcion"]; ?></p>
+
+                            <a href="#">Ver cursos</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- =================================================
+BOTONERA AUXILIAR
+================================================== -->
+<div class="container bg-dark">
+    <div class="row p-0">
+        <!-- =======================================
+        CATEGORIAS
+        ================================= -->
+        <div class="col-md-11 p-0 bg-warning">
+            <ul class="nav nav-taps nav-justified border-0">
+                <li class="nav-item">
+                    <a class="nav-link text-secondary p-0 py-2 small" href="#">
+                        <span class="badge badge-pill">
+                            <i class="fas fa-code"></i>
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-secondary p-0 py-2 small" href="#">
+                        <span class="badge badge-pill">
+                            <i class="fas fa-code"></i>
+                        </span>
+
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-secondary p-0 py-2 small" href="#">
+                        <span class="badge badge-pill">
+                            <i class="fas fa-code"></i>
+                        </span>
+
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-secondary p-0 py-2 small" href="#">
+                        <span class="badge badge-pill">
+                            <i class="fas fa-code"></i>
+                        </span>
+
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-secondary p-0 py-2 small" href="#">
+                        <span class="badge badge-pill">
+                            <i class="fas fa-code"></i>
+                        </span>
+
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-secondary p-0 py-2 small" href="#">
+                        <span class="badge badge-pill">
+                            <i class="fas fa-code"></i>
+                        </span>
+
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-secondary p-0 py-2 small" href="#">
+                        <span class="badge badge-pill">
+                            <i class="fas fa-code"></i>
+                        </span>
+
+                    </a>
+                </li>
+                <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-secondary" href="#" data-toggle="dropdown">
+                        Otros
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item text-secondary small" href="#">Link 1</a>
+                        <a class="dropdown-item text-secondary small" href="#">Link 2</a>
+                        <a class="dropdown-item text-secondary small" href="#">Link 3</a>
+                    </div>
+                </div>
+
+                <!-- =======================================
+IDIOMAS
+===================================== -->
+                <div class="col-md-1 dropdown p-sm-1 mt-1 mt-sm-0">
+                    <button type="button" class="btn-secondary dropdown-toggle w-100 small" href="#"
+                        data-toggle="dropdown">
+                        ES
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item small" href="#">Ingles</a>
+                        <a class="dropdown-item  small" href="#">Español</a>
+                    </div>
+                </div>
+            </ul>
+        </div>
+        <div class="col-md-1 bg-success"></div>
+    </div>
+</div>
